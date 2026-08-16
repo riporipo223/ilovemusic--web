@@ -697,11 +697,18 @@ section { position: relative; }
    Work your way
    --------------------------------------------------------------------- */
 
-.paths { margin-top: clamp(2.5rem, 5vw, 4rem); display: grid; gap: 1px; background: var(--line-strong); }
+.paths { margin-top: clamp(2.5rem, 5vw, 4rem); display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-strong); }
 
 .path {
   background: var(--paper);
   padding: clamp(2rem, 4vw, 3rem) 0;
+  /* .paths is a grid; a grid item defaults to min-width:auto, which
+     refuses to shrink below its content's min-content size. The code
+     block's unbreakable "git clone git@github.com:..." line was winning
+     that fight and stretching this whole row past the viewport on
+     mobile, silently clipped by the page-level overflow-x:hidden rather
+     than wrapped or scrolled — this is what actually fixes it. */
+  min-width: 0;
 }
 .path-inner {
   display: grid;
@@ -709,6 +716,7 @@ section { position: relative; }
   gap: clamp(1.5rem, 4vw, 3rem);
   align-items: center;
 }
+.path-copy, .path-inner > .code { min-width: 0; }
 .path-copy h3 { font-size: 1.6rem; margin-top: 0.7rem; font-weight: 700; letter-spacing: -0.01em; }
 .path-copy p { margin-top: 0.7rem; color: var(--ink-soft); line-height: 1.6; font-size: 0.95rem; max-width: 40ch; }
 .path-copy .link-arrow { margin-top: 1.3rem; }
