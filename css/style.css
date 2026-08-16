@@ -163,16 +163,12 @@ h1, h2, h3, h4, p { margin: 0; }
 .btn:active { transform: translateY(1px); }
 
 .btn-primary { background: var(--orange); color: var(--ink); }
-.btn-primary:hover { background: var(--ink); color: var(--orange); }
 
 .btn-dark { background: var(--ink); color: var(--paper); }
-.btn-dark:hover { background: var(--orange); color: var(--ink); }
 
 .btn-outline { background: transparent; border-color: var(--ink); color: var(--ink); }
-.btn-outline:hover { border-color: var(--orange-text); color: var(--orange-text); }
 
 .btn-outline-dark { background: transparent; border-color: var(--dark-line); color: var(--dark-ink); }
-.btn-outline-dark:hover { border-color: var(--orange); color: var(--orange); }
 
 .link-arrow {
   display: inline-flex;
@@ -183,9 +179,7 @@ h1, h2, h3, h4, p { margin: 0; }
   padding-bottom: 0.15em;
   transition: border-color 0.2s ease, color 0.2s ease, gap 0.2s ease;
 }
-.link-arrow:hover { border-color: var(--orange-text); color: var(--orange-text); gap: 0.75em; }
 .link-arrow.on-dark { border-color: var(--dark-line); }
-.link-arrow.on-dark:hover { border-color: var(--orange); color: var(--orange); }
 
 /* ---------------------------------------------------------------------
    Nav
@@ -233,12 +227,8 @@ h1, h2, h3, h4, p { margin: 0; }
   background: var(--orange);
   transition: right 0.25s var(--ease);
 }
-.nav-links a:not(.btn):hover { color: var(--orange-text); }
-.nav-links a:not(.btn):hover::after { right: 0; }
-
 .nav-actions { display: flex; align-items: center; gap: 1.2rem; }
 .nav-support { font-size: 0.88rem; font-weight: 500; color: var(--ink-soft); }
-.nav-support:hover { color: var(--orange); }
 
 .nav-toggle {
   display: none;
@@ -351,7 +341,6 @@ h1, h2, h3, h4, p { margin: 0; }
   white-space: nowrap;
   transition: transform 0.3s var(--ease), box-shadow 0.3s ease;
 }
-.frag:hover { box-shadow: 0 22px 36px -8px rgba(22, 22, 22, 0.45); }
 .frag b { color: var(--orange); font-weight: 700; }
 
 .frag-np {
@@ -363,7 +352,6 @@ h1, h2, h3, h4, p { margin: 0; }
   gap: 0.6em;
 }
 .frag-np::before { content: '▶'; font-size: 0.7em; color: var(--orange); }
-.frag-np:hover { transform: rotate(3deg) translateY(-5px); }
 
 .frag-bpm {
   top: 4%;
@@ -375,7 +363,6 @@ h1, h2, h3, h4, p { margin: 0; }
   font-family: var(--font-bitmap);
   letter-spacing: 0.06em;
 }
-.frag-bpm:hover { transform: rotate(-4deg) translateY(-5px); }
 
 .frag-source {
   bottom: -6%;
@@ -385,7 +372,6 @@ h1, h2, h3, h4, p { margin: 0; }
   color: var(--ink);
   border: 1.5px solid var(--line-strong);
 }
-.frag-source:hover { transform: rotate(-2deg) translateY(-5px); }
 
 /* ---------------------------------------------------------------------
    Marquee strip — thin dark interruption
@@ -443,7 +429,6 @@ section { position: relative; }
   transform: rotate(-4deg);
   transition: transform 0.4s var(--ease);
 }
-.section-head-figure:hover { transform: rotate(-1deg) scale(1.03); }
 .section-head-figure img {
   width: 100%;
   border: 3px solid var(--ink);
@@ -483,9 +468,7 @@ section { position: relative; }
   border-bottom: 1px solid var(--line);
 }
 .index-row { transition: background 0.25s ease, padding-left 0.25s ease; }
-.index-row:hover { background: var(--cream); padding-left: 0.6rem; }
 .index-row h3 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.01em; transition: color 0.25s ease; }
-.index-row:hover h3 { color: var(--orange-text); }
 .index-row p { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.55; max-width: 46ch; }
 .index-tag {
   font-family: var(--font-mono);
@@ -629,9 +612,7 @@ section { position: relative; }
   border-bottom: 1px solid var(--line);
   transition: background 0.25s ease, padding-left 0.25s ease;
 }
-.track-row:hover { background: var(--cream); padding-left: 0.6rem; }
 .track-row h3 { font-size: 1.1rem; font-weight: 700; transition: color 0.25s ease; }
-.track-row:hover h3 { color: var(--orange-text); }
 .track-row p { color: var(--ink-soft); font-size: 0.9rem; line-height: 1.5; }
 @media (max-width: 720px) {
   .track-row { grid-template-columns: 2.2rem minmax(0,1fr); }
@@ -663,7 +644,6 @@ section { position: relative; }
   position: relative;
   transition: transform 0.4s var(--ease);
 }
-.art-figure:hover > picture > img { transform: rotate(0.5deg) scale(1.01); }
 .art-figure-tag {
   position: absolute;
   bottom: -14px;
@@ -749,7 +729,6 @@ section { position: relative; }
   display: flex; align-items: center; gap: 0.4em;
   transition: color 0.2s ease;
 }
-.code-copy:hover { color: var(--orange); }
 .code pre { margin: 0; padding: 1.1rem 1.2rem; overflow-x: auto; font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.7; }
 .code code { color: var(--dark-ink); }
 .code .tok-cmd { color: var(--orange); }
@@ -799,7 +778,6 @@ section { position: relative; }
 }
 .platform-row:last-child { border-bottom: none; }
 .platform-row { transition: background 0.25s ease, padding-left 0.25s ease; }
-.platform-row:hover { background: var(--cream); padding-left: 0.6rem; }
 .platform-row h3 { font-size: 1.15rem; font-weight: 700; }
 .platform-row p { color: var(--ink-soft); font-size: 0.86rem; }
 .platform-row .index-tag { color: var(--ink-faint); }
@@ -819,7 +797,6 @@ section { position: relative; }
 
 .trio-links { margin-top: 1.3rem; display: grid; gap: 0.55rem; }
 .trio-links a { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink); transition: color 0.2s ease; }
-.trio-links a:hover { color: var(--orange-text); }
 
 .trio-stat { display: flex; gap: 2rem; margin-top: 1rem; }
 .trio-stat b { display: block; font-family: var(--font-bitmap); font-size: 1.7rem; color: var(--orange); }
@@ -828,7 +805,6 @@ section { position: relative; }
 .trio-block.is-inverse { background: var(--ink); color: var(--paper); padding: 1.8rem; }
 .trio-block.is-inverse p { color: var(--dark-faint); }
 .trio-block.is-inverse .trio-links a { color: var(--paper); }
-.trio-block.is-inverse .trio-links a:hover { color: var(--orange); }
 
 @media (max-width: 860px) {
   .trio { grid-template-columns: 1fr; }
@@ -852,7 +828,6 @@ section { position: relative; }
 .roadmap-col.ahead .roadmap-col-label { color: var(--ink-faint); }
 .roadmap-list { margin-top: 1.2rem; display: grid; gap: 1rem; }
 .roadmap-item { padding: 0.9rem 0; border-bottom: 1px solid var(--line); font-size: 0.98rem; color: var(--ink); font-weight: 500; transition: padding-left 0.25s ease; }
-.roadmap-item:hover { padding-left: 0.6rem; }
 .roadmap-item span { display: block; margin-top: 0.3rem; font-size: 0.82rem; color: var(--ink-soft); font-weight: 400; }
 .roadmap-note { margin-top: 1.2rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-faint); line-height: 1.6; }
 
@@ -911,7 +886,6 @@ section { position: relative; }
 .footer-col h4 { font-family: var(--font-bitmap); font-size: 0.68rem; letter-spacing: 0.08em; color: var(--dark-faint); margin-bottom: 0.9rem; }
 .footer-col ul { display: grid; gap: 0.6rem; }
 .footer-col a { font-size: 0.85rem; color: var(--dark-ink); transition: color 0.2s ease; }
-.footer-col a:hover { color: var(--orange); }
 .footer-bottom {
   margin-top: 2.2rem;
   padding-top: 1.4rem;
@@ -985,4 +959,54 @@ section { position: relative; }
   color: var(--dark-ink);
   width: 38px; height: 38px;
   display: flex; align-items: center; justify-content: center;
+}
+
+/* =========================================================================
+   Hover states — gated to real pointer devices only.
+
+   Every :hover rule in this file lives here instead of next to its base
+   rule. On a touch device there is no cursor to "leave", so a tap can
+   trigger :hover and it just sticks — the row you last tapped stays
+   permanently highlighted as if a mouse were still parked on it. Scoping
+   all of it behind (hover: hover) and (pointer: fine) means touchscreens
+   never enter these rules in the first place, so nothing can get stuck.
+   ========================================================================= */
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover { background: var(--ink); color: var(--orange); }
+  .btn-dark:hover { background: var(--orange); color: var(--ink); }
+  .btn-outline:hover { border-color: var(--orange-text); color: var(--orange-text); }
+  .btn-outline-dark:hover { border-color: var(--orange); color: var(--orange); }
+
+  .link-arrow:hover { border-color: var(--orange-text); color: var(--orange-text); gap: 0.75em; }
+  .link-arrow.on-dark:hover { border-color: var(--orange); color: var(--orange); }
+
+  .nav-links a:not(.btn):hover { color: var(--orange-text); }
+  .nav-links a:not(.btn):hover::after { right: 0; }
+  .nav-support:hover { color: var(--orange); }
+
+  .frag:hover { box-shadow: 0 22px 36px -8px rgba(22, 22, 22, 0.45); }
+  .frag-np:hover { transform: rotate(3deg) translateY(-5px); }
+  .frag-bpm:hover { transform: rotate(-4deg) translateY(-5px); }
+  .frag-source:hover { transform: rotate(-2deg) translateY(-5px); }
+
+  .section-head-figure:hover { transform: rotate(-1deg) scale(1.03); }
+
+  .index-row:hover { background: var(--cream); padding-left: 0.6rem; }
+  .index-row:hover h3 { color: var(--orange-text); }
+
+  .track-row:hover { background: var(--cream); padding-left: 0.6rem; }
+  .track-row:hover h3 { color: var(--orange-text); }
+
+  .art-figure:hover > picture > img { transform: rotate(0.5deg) scale(1.01); }
+
+  .code-copy:hover { color: var(--orange); }
+
+  .platform-row:hover { background: var(--cream); padding-left: 0.6rem; }
+
+  .trio-links a:hover { color: var(--orange-text); }
+  .trio-block.is-inverse .trio-links a:hover { color: var(--orange); }
+
+  .roadmap-item:hover { padding-left: 0.6rem; }
+
+  .footer-col a:hover { color: var(--orange); }
 }
