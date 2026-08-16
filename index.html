@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ILoveMusic: download it once, keep it forever</title>
+<meta name="description" content="ILoveMusic is an open-source tool for downloading, tagging, and organizing music from Spotify, SoundCloud, and Bandcamp, available as a desktop app, a terminal client, or an API. Clean metadata, automatic BPM detection, MIT licensed.">
+<meta name="theme-color" content="#ece9e2">
+
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="ILoveMusic: download it once, keep it forever">
+<meta property="og:description" content="Open-source music downloader for Spotify, SoundCloud, and Bandcamp. Clean metadata, automatic BPM detection, desktop app + CLI + API. MIT licensed.">
+<meta property="og:image" content="assets/icons/icon-512.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ILoveMusic: download it once, keep it forever">
+<meta name="twitter:description" content="Open-source music downloader for Spotify, SoundCloud, and Bandcamp. Desktop app, CLI, and API. MIT licensed.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=DotGothic16&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main" style="position:absolute;left:-9999px;top:0;background:#e64c28;color:#ece9e2;padding:0.8em 1.2em;z-index:1000;font-weight:600;">Skip to content</a>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="siteNav">
+  <a href="#top" class="nav-mark">
+    <img src="assets/icons/app-icon.png" alt="" width="22" height="22">
+    <span class="nav-mark-text">ILOVEMUSIC</span>
+  </a>
+
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#ways">Product</a>
+    <a href="#work-your-way">CLI &amp; API</a>
+    <a href="https://form-1.gitbook.io/form-docs" target="_blank" rel="noopener">Docs</a>
+    <a href="https://github.com/riporipo223/iam-ilovemusic" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+
+  <div class="nav-actions">
+    <a class="nav-support" href="#support">♥ Support</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navSheet">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 4h14M1 8h14M1 12h14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="nav-sheet" id="navSheet">
+  <button class="nav-sheet-close" id="navSheetClose" aria-label="Close menu">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+  </button>
+  <a href="#ways">Product</a>
+  <a href="#work-your-way">CLI &amp; API</a>
+  <a href="https://form-1.gitbook.io/form-docs" target="_blank" rel="noopener">Docs</a>
+  <a href="https://github.com/riporipo223/iam-ilovemusic" target="_blank" rel="noopener">GitHub</a>
+  <a href="#support">Support</a>
+  <a class="btn btn-primary" href="https://github.com/riporipo223/iam-ilovemusic/archive/refs/tags/v0.2.4.zip">Get ILoveMusic</a>
+</div>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="top">
+    <div class="container hero-grid">
+      <div class="hero-copy" data-reveal>
+        <span class="label">open source · spotify · soundcloud · bandcamp</span>
+        <h1>Download it once.<br><span>Keep</span> it forever.</h1>
+        <p>ILoveMusic pulls tracks from Spotify, SoundCloud, and Bandcamp, tags them properly, and works out the BPM automatically. Desktop app, terminal, or API: pick the one that fits how you work.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://github.com/riporipo223/iam-ilovemusic/archive/refs/tags/v0.2.4.zip" target="_blank" rel="noopener">Get ILoveMusic</a>
+          <a class="link-arrow" href="https://github.com/riporipo223/iam-ilovemusic" target="_blank" rel="noopener">View on GitHub ↗</a>
+        </div>
+        <p class="hero-actions-note bitmap" id="platformHint">macos · apple silicon · v0.2.4 source archive</p>
+      </div>
+
+      <div class="hero-visual" data-reveal data-reveal-delay="2">
+        <div class="hero-portrait-wrap">
+          <div class="hero-bar" style="height:100%" aria-hidden="true"></div>
+          <picture>
+            <source srcset="assets/art/mona-headphones.webp" type="image/webp">
+            <img class="hero-portrait" src="assets/art/mona-headphones.jpg" alt="The Mona Lisa, reimagined wearing a pair of over-ear headphones and looking unimpressed." width="735" height="886" loading="eager">
+          </picture>
+          <div class="frag frag-np" aria-hidden="true">Warehouse Sunrise <b>·</b> Ilsa Voight</div>
+          <div class="frag frag-bpm bitmap" aria-hidden="true">BPM 128</div>
+          <div class="frag frag-source" aria-hidden="true">SPOTIFY · 320KBPS</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MARQUEE STRIP ================= -->
+  <div class="strip" aria-hidden="true">
+    <div class="strip-track">
+      <span><em>Spotify</em> · SoundCloud · Bandcamp · MIT Licensed · Open Source · Desktop · CLI · API</span>
+      <span><em>Spotify</em> · SoundCloud · Bandcamp · MIT Licensed · Open Source · Desktop · CLI · API</span>
+    </div>
+  </div>
+
+  <!-- ================= PRODUCT INTRO ================= -->
+  <section class="section-pad" id="ways">
+    <div class="container">
+      <p class="intro-lede" data-reveal><b>ILoveMusic</b> is an open-source tool for downloading, tagging, and organizing music from Spotify, SoundCloud, and Bandcamp. Built for DJs, collectors, and people who like digging through music, not streaming it on shuffle.</p>
+
+      <div class="index-list">
+        <div class="index-row">
+          <span class="index-num">01</span>
+          <h3>Desktop</h3>
+          <div>
+            <p>The original, full-featured app: library, playback, artwork, batch downloads, ZIP export. Electron + React, for macOS, Windows, and Linux.</p>
+            <span class="index-tag">full experience</span>
+          </div>
+        </div>
+        <div class="index-row">
+          <span class="index-num">02</span>
+          <h3>CLI</h3>
+          <div>
+            <p>A lightweight, interactive terminal client. No Electron, no curl, no HTTP headers, just <code style="font-family:var(--font-mono)">ilovemusic download</code> and answer the prompts.</p>
+            <span class="index-tag">npm install -g @ilovemusic/cli</span>
+          </div>
+        </div>
+        <div class="index-row">
+          <span class="index-num">03</span>
+          <h3>API</h3>
+          <div>
+            <p>The same engine as a self-hosted job-based HTTP API, for anyone who wants to build their own client on top of it.</p>
+            <span class="index-tag">self-hosted, no SLA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LIVING DEMO ================= -->
+  <section class="demo-section" id="demo">
+    <div class="container">
+      <div class="demo-head" data-reveal>
+        <span class="label on-dark">002 · a visual demonstration</span>
+        <h2>Watch a download happen.</h2>
+        <p>BPM gets detected automatically on every download. Musical key too, from real audio analysis, when the source is Spotify. SoundCloud and Bandcamp fall back to file tags, so key is sometimes blank there.</p>
+      </div>
+
+      <div class="demo-stage" data-reveal data-reveal-delay="1" id="demoStage">
+        <div class="demo-row">
+          <div class="demo-art" id="demoArt">♪</div>
+          <div class="demo-meta">
+            <div class="demo-title" id="demoTitle"></div>
+            <div class="demo-artist" id="demoArtist"></div>
+          </div>
+          <div class="demo-chips" id="demoChips">
+            <span class="demo-chip">SPOTIFY</span>
+            <span class="demo-chip is-hot">BPM 124</span>
+            <span class="demo-chip">F MIN</span>
+            <span class="demo-chip">320KBPS</span>
+          </div>
+        </div>
+
+        <div class="demo-wave" id="demoWave" aria-hidden="true"></div>
+
+        <div class="demo-progress-row">
+          <span class="demo-status" id="demoStatus">QUEUED</span>
+          <div class="demo-progress-track"><div class="demo-progress-fill" id="demoFill"></div></div>
+          <span class="demo-progress-pct" id="demoPct">0%</span>
+        </div>
+
+        <p class="demo-caption">a visual demonstration of the real download flow, not a live download</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURES (tracklist) ================= -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="label">003 · what it does</span>
+        <h2>Not twelve features. Five things, done properly.</h2>
+      </div>
+
+      <div class="tracklist">
+        <div class="track-row">
+          <span class="index-num">01</span>
+          <h3>Get it</h3>
+          <p>One URL at a time from Spotify, SoundCloud, or Bandcamp. Spotify downloads at 320kbps via spotdl.</p>
+        </div>
+        <div class="track-row">
+          <span class="index-num">02</span>
+          <h3>Keep it organized</h3>
+          <p>Artwork and metadata are embedded and tagged automatically, so your library looks right without manual cleanup.</p>
+        </div>
+        <div class="track-row">
+          <span class="index-num">03</span>
+          <h3>Know your tracks</h3>
+          <p>BPM detection on every download. Key detection too, from real audio analysis, when the source is Spotify.</p>
+        </div>
+        <div class="track-row">
+          <span class="index-num">04</span>
+          <h3>Work in batches</h3>
+          <p>Queue up more than one track in the desktop app and export the finished set as a ZIP.</p>
+        </div>
+        <div class="track-row">
+          <span class="index-num">05</span>
+          <h3>Listen before you keep it</h3>
+          <p>Preview audio right inside the desktop app before a track lands in your library.</p>
+        </div>
+        <div class="track-row">
+          <span class="index-num">06</span>
+          <h3>Bring your own Spotify</h3>
+          <p>Spotify access uses your own Developer App credentials (BYOK), encrypted at rest. Never a shared platform login.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ART INTERRUPTION ================= -->
+  <section class="art-break">
+    <div class="container art-grid">
+      <div class="art-figure" data-reveal>
+        <picture>
+          <source srcset="assets/art/mona-airpods.webp" type="image/webp">
+          <img src="assets/art/mona-airpods.jpg" alt="The Mona Lisa wearing white over-ear headphones, hands raised as if dancing to the music." width="735" height="429" loading="lazy">
+        </picture>
+        <span class="art-figure-tag bitmap">found on the internet</span>
+      </div>
+      <div class="art-copy" data-reveal data-reveal-delay="1">
+        <span class="label">004 · a short interruption</span>
+        <h2>Music has always been a little obsessive.</h2>
+        <p>People have been sitting with headphones on, replaying the same track, chasing the exact right copy of a song, for as long as there's been recorded music to chase.</p>
+        <p>ILoveMusic is for that. Not for streaming on shuffle and forgetting, but for the version of listening where you actually want to keep the thing you found.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORK YOUR WAY ================= -->
+  <section class="section-pad" id="work-your-way">
+    <div class="container">
+      <div class="section-head section-head-with-figure" data-reveal>
+        <div>
+          <span class="label">005 · work your way</span>
+          <h2>Three ways in. Same engine underneath.</h2>
+        </div>
+        <div class="section-head-figure">
+          <picture>
+            <source srcset="assets/art/jesus-turntables.webp" type="image/webp">
+            <img src="assets/art/jesus-turntables.jpg" alt="A classical painting reimagined with Jesus DJing on a pair of turntables, watched by two apostles." width="736" height="736" loading="lazy">
+          </picture>
+          <span class="art-figure-tag bitmap">found on the internet</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="paths">
+      <div class="path" data-reveal>
+        <div class="container path-inner">
+          <div class="path-copy">
+            <span class="label">desktop</span>
+            <h3>For the full visual experience.</h3>
+            <p>Library, playback, artwork, batch downloads, ZIP export. No packaged installer yet; build it from source.</p>
+            <a class="link-arrow" href="https://github.com/riporipo223/iam-ilovemusic#development" target="_blank" rel="noopener">Build from source →</a>
+          </div>
+          <div class="code">
+            <div class="code-bar"><span>terminal</span><button class="code-copy" data-copy-target="code-desktop">copy</button></div>
+            <pre id="code-desktop"><code><span class="tok-com"># clone and run locally</span>
+<span class="tok-cmd">git</span> clone git@github.com:riporipo223/iam-ilovemusic.git
+<span class="tok-cmd">cd</span> iam-ilovemusic
+<span class="tok-cmd">npm</span> install
+<span class="tok-cmd">npm</span> install --prefix renderer
+<span class="tok-cmd">npm</span> run dev</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="path is-dark" data-reveal>
+        <div class="container path-inner">
+          <div class="path-copy">
+            <span class="label on-dark">terminal</span>
+            <h3>For people who live in the shell.</h3>
+            <p>No curl, no HTTP headers, no job polling. It prompts you and saves the finished file to <code style="font-family:var(--font-mono)">~/Downloads/ILoveMusic/</code>. Runs on macOS, Linux, and Windows.</p>
+            <a class="link-arrow on-dark" href="https://form-1.gitbook.io/form-docs/cli-guide" target="_blank" rel="noopener">Read the CLI guide →</a>
+          </div>
+          <div class="code">
+            <div class="code-bar"><span>terminal</span><button class="code-copy" data-copy-target="code-cli">copy</button></div>
+            <pre id="code-cli"><code><span class="tok-cmd">npm</span> install -g @ilovemusic/cli
+
+<span class="tok-cmd">ilovemusic</span> create-api-key
+<span class="tok-cmd">ilovemusic</span> download</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="path" data-reveal>
+        <div class="container path-inner">
+          <div class="path-copy">
+            <span class="label">api</span>
+            <h3>For developers building their own client.</h3>
+            <p>Self-hosted at <code style="font-family:var(--font-mono)">api.madebyripo.sbs</code>. No uptime SLA, so check <code style="font-family:var(--font-mono)">/health</code> before depending on it.</p>
+            <a class="link-arrow" href="https://form-1.gitbook.io/form-docs/endpoints/downloads" target="_blank" rel="noopener">Read the API reference →</a>
+          </div>
+          <div class="code">
+            <div class="code-bar"><span>bash</span><button class="code-copy" data-copy-target="code-api">copy</button></div>
+            <pre id="code-api"><code><span class="tok-cmd">curl</span> -X POST https://api.madebyripo.sbs/v1/downloads \
+  -H <span class="tok-str">"X-API-Key: YOUR_API_KEY"</span> \
+  -H <span class="tok-str">"Content-Type: application/json"</span> \
+  -d <span class="tok-str">'{"source": "spotify", "url": "..."}'</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= QUICK START / DOWNLOAD ================= -->
+  <section class="section-pad" id="download">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="label">006 · quick start</span>
+        <h2>The fastest way to actually download something.</h2>
+        <p>Ready in under a minute, no packaged installer required.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span class="index-num">01</span>
+          <h3>Install the CLI</h3>
+          <p>One npm command. Needs Node.js 20 or newer, nothing else.</p>
+        </div>
+        <div class="step">
+          <span class="index-num">02</span>
+          <h3>Create a key</h3>
+          <p>Self-serve, rate-limited to 3 per IP per day. Saved locally, no account needed.</p>
+        </div>
+        <div class="step">
+          <span class="index-num">03</span>
+          <h3>Download</h3>
+          <p>Pick a source, paste a URL. The finished file lands in <code style="font-family:var(--font-mono)">~/Downloads/ILoveMusic/</code>.</p>
+        </div>
+      </div>
+
+      <div class="quickstart-cli" data-reveal data-reveal-delay="2">
+        <div class="code">
+          <div class="code-bar"><span>terminal</span><button class="code-copy" data-copy-target="code-quickstart">copy</button></div>
+          <pre id="code-quickstart"><code><span class="tok-cmd">npm</span> install -g @ilovemusic/cli
+<span class="tok-cmd">ilovemusic</span> create-api-key
+<span class="tok-cmd">ilovemusic</span> download</code></pre>
+        </div>
+        <div class="quickstart-foot">
+          <a class="btn btn-dark" href="https://www.npmjs.com/package/@ilovemusic/cli" target="_blank" rel="noopener">View on npm</a>
+          <a class="link-arrow" href="https://form-1.gitbook.io/form-docs" target="_blank" rel="noopener">Full documentation →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PLATFORMS ================= -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="label">007 · supported platforms</span>
+        <h2>Wherever you already work.</h2>
+      </div>
+
+      <div class="platform-strip">
+        <div class="platform-row">
+          <h3>macOS</h3>
+          <p>Desktop: build from source (<code style="font-family:var(--font-mono)">npm run build:mac</code>) · CLI: npm, Node.js 20+</p>
+          <span class="index-tag bitmap">source available</span>
+        </div>
+        <div class="platform-row">
+          <h3>Windows</h3>
+          <p>Desktop: build from source (<code style="font-family:var(--font-mono)">npm run build:win</code>) · CLI: npm, Node.js 20+</p>
+          <span class="index-tag bitmap">source available</span>
+        </div>
+        <div class="platform-row">
+          <h3>Linux</h3>
+          <p>Desktop: build from source (<code style="font-family:var(--font-mono)">npm run build:linux</code>) · CLI: npm, Node.js 20+</p>
+          <span class="index-tag bitmap">source available</span>
+        </div>
+      </div>
+      <p class="roadmap-note" data-reveal data-reveal-delay="2" style="margin-top:1.2rem;">Packaged installers aren't published yet. See the <a href="https://github.com/riporipo223/iam-ilovemusic/releases" target="_blank" rel="noopener" style="color:var(--orange)">Releases page</a> for when they land. The desktop app also needs ffmpeg, aubio, spotdl, and yt-dlp on your machine when running from source.</p>
+    </div>
+  </section>
+
+  <!-- ================= DOCS / OPEN SOURCE / SUPPORT ================= -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="trio">
+        <div class="trio-block" data-reveal>
+          <span class="label">docs</span>
+          <h3>Need the details?</h3>
+          <p>Installation, the CLI walkthrough, the full API reference, BYOK setup, and known limitations all live in the docs.</p>
+          <div class="trio-links">
+            <a href="https://form-1.gitbook.io/form-docs" target="_blank" rel="noopener">→ Getting Started</a>
+            <a href="https://form-1.gitbook.io/form-docs/cli-guide" target="_blank" rel="noopener">→ CLI Guide</a>
+            <a href="https://form-1.gitbook.io/form-docs/endpoints/downloads" target="_blank" rel="noopener">→ API Reference</a>
+          </div>
+          <a class="link-arrow" style="margin-top:1.4rem;" href="https://form-1.gitbook.io/form-docs" target="_blank" rel="noopener">Read the documentation →</a>
+        </div>
+
+        <div class="trio-block is-inverse" data-reveal data-reveal-delay="1">
+          <span class="label on-dark">open source</span>
+          <h3>Built in public.</h3>
+          <p>Read the code, open an issue, fork it, build on it. MIT licensed.</p>
+          <div class="trio-stat" id="ghStats" aria-live="polite">
+            <div><b id="ghStars">···</b><span>stars</span></div>
+            <div><b id="ghForks">···</b><span>forks</span></div>
+            <div><b>MIT</b><span>license</span></div>
+          </div>
+          <a class="btn btn-primary" style="margin-top:1.6rem; align-self:flex-start;" href="https://github.com/riporipo223/iam-ilovemusic" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+
+        <div class="trio-block" id="support" data-reveal data-reveal-delay="2">
+          <span class="label">support</span>
+          <h3>Keep the music playing.</h3>
+          <p>Free and open source, built and maintained by one person. There's no funding page yet, so right now the best support is using it, filing real bugs, and sending pull requests.</p>
+          <div class="trio-links">
+            <a href="https://github.com/riporipo223/iam-ilovemusic" target="_blank" rel="noopener">→ Star the repo</a>
+            <a href="https://github.com/riporipo223/iam-ilovemusic/issues" target="_blank" rel="noopener">→ Open an issue</a>
+            <a href="https://github.com/riporipo223/iam-ilovemusic#contributing" target="_blank" rel="noopener">→ Send a pull request</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ROADMAP ================= -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="label">008 · roadmap</span>
+        <h2>Where it's going.</h2>
+      </div>
+
+      <div class="roadmap">
+        <div class="roadmap-col now" data-reveal>
+          <div class="roadmap-col-label"><span>shipped</span><span>v0.2.4</span></div>
+          <div class="roadmap-list">
+            <div class="roadmap-item">Spotify, SoundCloud &amp; Bandcamp downloads<span>Single track, 320kbps on Spotify via spotdl</span></div>
+            <div class="roadmap-item">Automatic BPM detection<span>Every source, every download</span></div>
+            <div class="roadmap-item">Spotify key detection<span>Real audio analysis, BYOK credentials</span></div>
+            <div class="roadmap-item">Self-serve API keys &amp; the CLI<span>@ilovemusic/cli on npm</span></div>
+          </div>
+        </div>
+        <div class="roadmap-col ahead" data-reveal data-reveal-delay="1">
+          <div class="roadmap-col-label"><span>planned ideas</span><span>unscheduled</span></div>
+          <div class="roadmap-list">
+            <div class="roadmap-item">Playlist &amp; album downloads<span>Currently single-track only, for every source</span></div>
+            <div class="roadmap-item">Rekordbox export<span>For DJs already living in Rekordbox</span></div>
+            <div class="roadmap-item">Better waveform visualization<span>Desktop app</span></div>
+            <div class="roadmap-item">Duplicate detection &amp; better library tools<span>Desktop app</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="roadmap-note" data-reveal data-reveal-delay="2">Nothing on the right side is committed or scheduled. It's the direction, not a promise.</p>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section-pad">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <span class="label">009 · faq</span>
+        <h2>Questions worth answering upfront.</h2>
+      </div>
+
+      <div class="faq-list" data-reveal data-reveal-delay="1">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">What is ILoveMusic?<span class="faq-q-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">An open-source tool for downloading, tagging, and organizing music from Spotify, SoundCloud, and Bandcamp, available as a desktop app, a terminal client, or an API you can call directly.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Which operating systems are supported?<span class="faq-q-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">The desktop app targets macOS, Windows, and Linux (it's Electron). The CLI runs anywhere Node.js 20+ does. Packaged desktop installers aren't published yet, so building from source is currently the way in on desktop.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">What sources are supported?<span class="faq-q-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Spotify, SoundCloud, and Bandcamp. Single tracks only, no playlists or albums yet; Bandcamp album and artist pages are rejected outright rather than mishandled.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Is ILoveMusic free?<span class="faq-q-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes, MIT licensed. The public API is self-hosted by the maintainer with no uptime guarantee, so check the docs' Limitations page before depending on it for anything unattended.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Can I use it from the terminal?<span class="faq-q-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes, that's <code style="font-family:var(--font-mono)">@ilovemusic/cli</code>. <code style="font-family:var(--font-mono)">npm install -g @ilovemusic/cli</code>, then <code style="font-family:var(--font-mono)">ilovemusic create-api-key</code> and <code style="font-family:var(--font-mono)">ilovemusic download</code>.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Where does my downloaded music go?<span class="faq-q-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">The CLI saves finished files to <code style="font-family:var(--font-mono)">~/Downloads/ILoveMusic/</code>, named <code style="font-family:var(--font-mono)">artist - title.mp3</code> from the file's own ID3 tags. The desktop app keeps its own local library.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Can I use the API directly?<span class="faq-q-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Self-serve a key with <code style="font-family:var(--font-mono)">POST /v1/api-keys</code> (3 per day per IP), then <code style="font-family:var(--font-mono)">POST /v1/downloads</code> and poll <code style="font-family:var(--font-mono)">GET /v1/downloads/{job_id}</code>. Full reference in the docs.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">What about musical key detection?<span class="faq-q-icon" aria-hidden="true">+</span></button>
+          <div class="faq-a"><div class="faq-a-inner">Only Spotify downloads get real audio-analysis key detection right now. SoundCloud and Bandcamp fall back to file tags, so key is frequently blank for those two. A known limitation, not a bug.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FINAL CTA ================= -->
+  <section class="final-cta">
+    <div class="container final-cta-inner" data-reveal>
+      <h2>Keep the<br><span>music.</span></h2>
+      <div class="final-cta-actions">
+        <p style="color:var(--ink-soft); font-size:1rem;">Open source, MIT licensed, and built for people who actually want to keep what they find.</p>
+        <a class="btn btn-primary" href="https://github.com/riporipo223/iam-ilovemusic/archive/refs/tags/v0.2.4.zip" target="_blank" rel="noopener">Get ILoveMusic</a>
+        <span class="bitmap" style="font-size:0.68rem; color:var(--ink-faint);">macos · apple silicon · v0.2.4 source</span>
+        <a class="link-arrow" href="https://github.com/riporipo223/iam-ilovemusic" target="_blank" rel="noopener">View on GitHub ↗</a>
+        <a class="link-arrow" href="https://form-1.gitbook.io/form-docs" target="_blank" rel="noopener">Read the Docs ↗</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/icons/app-icon.png" alt="" width="20" height="20">
+          ILOVEMUSIC
+        </div>
+        <p class="footer-tagline">Open-source music software, built and maintained by one person who really likes digging through tracks.</p>
+      </div>
+      <div class="footer-col">
+        <h4>PRODUCT</h4>
+        <ul>
+          <li><a href="#download">Download</a></li>
+          <li><a href="#work-your-way">CLI</a></li>
+          <li><a href="https://form-1.gitbook.io/form-docs/endpoints/downloads" target="_blank" rel="noopener">API</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>DOCS</h4>
+        <ul>
+          <li><a href="https://form-1.gitbook.io/form-docs" target="_blank" rel="noopener">Getting Started</a></li>
+          <li><a href="https://form-1.gitbook.io/form-docs/cli-guide" target="_blank" rel="noopener">CLI Guide</a></li>
+          <li><a href="https://form-1.gitbook.io/form-docs/endpoints/downloads" target="_blank" rel="noopener">API Reference</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>COMMUNITY</h4>
+        <ul>
+          <li><a href="https://github.com/riporipo223/iam-ilovemusic" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://github.com/riporipo223/iam-ilovemusic/issues" target="_blank" rel="noopener">Issues</a></li>
+          <li><a href="https://github.com/riporipo223/iam-ilovemusic#contributing" target="_blank" rel="noopener">Contributing</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>PROJECT</h4>
+        <ul>
+          <li><a href="https://github.com/riporipo223/iam-ilovemusic#license" target="_blank" rel="noopener">MIT License</a></li>
+          <li><a href="#support">Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>independent &amp; unaffiliated. spotify, soundcloud, and bandcamp are trademarks of their respective owners.</span>
+      <span>mit licensed</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
