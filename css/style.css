@@ -945,12 +945,32 @@ section { position: relative; }
 
   /* tame the editorial bleed so nothing exceeds the viewport on small screens */
   .hero-visual { padding: 0 0.75rem; }
-  .hero-portrait-wrap { width: min(84vw, 300px); transform: rotate(-1.5deg) translateY(var(--parallax-y)); }
+  .hero-portrait-wrap { width: min(58vw, 210px); transform: rotate(-1.5deg) translateY(var(--parallax-y)); }
   .hero-bar { top: -5%; right: -6%; }
-  .frag { font-size: 0.68rem; padding: 0.5em 0.85em; }
+  .frag { font-size: 0.6rem; padding: 0.45em 0.75em; }
   .frag-np { left: -4%; }
   .frag-bpm { right: -3%; }
   .frag-source { right: 2%; }
+}
+
+@media (max-width: 720px) {
+  /* with scroll-snap active on mobile, the hero needs to actually fit
+     one screen — otherwise it "locks" into place with its own bottom
+     content (paragraph, CTA) hanging past the fold, which reads as
+     broken rather than snapped. Compact the whole stack: less top
+     clearance above the nav, a smaller portrait, tighter type and
+     spacing throughout. */
+  .hero { padding-top: clamp(4.5rem, 18vw, 5.5rem); padding-bottom: 1.5rem; }
+  .hero-grid { gap: 1.1rem; }
+  .hero-visual { min-height: 0; margin-bottom: 0.5rem; }
+  .hero-copy h1 {
+    font-size: clamp(2.1rem, 8vw, 2.6rem);
+    line-height: 0.98;
+    margin: 0.7rem 0 0.8rem;
+  }
+  .hero-copy p { font-size: 0.95rem; max-width: 38ch; }
+  .hero-actions { margin-top: 1.3rem; gap: 0.9rem; }
+  .hero-actions-note { margin-top: 0.9rem; }
 }
 
 /* mobile nav sheet */
