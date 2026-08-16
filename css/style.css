@@ -627,10 +627,11 @@ section { position: relative; }
   align-items: center;
   padding: 1.35rem 0;
   border-bottom: 1px solid var(--line);
-  transition: background 0.2s ease;
+  transition: background 0.25s ease, padding-left 0.25s ease;
 }
-.track-row:hover { background: var(--cream); }
-.track-row h3 { font-size: 1.1rem; font-weight: 700; }
+.track-row:hover { background: var(--cream); padding-left: 0.6rem; }
+.track-row h3 { font-size: 1.1rem; font-weight: 700; transition: color 0.25s ease; }
+.track-row:hover h3 { color: var(--orange-text); }
 .track-row p { color: var(--ink-soft); font-size: 0.9rem; line-height: 1.5; }
 @media (max-width: 720px) {
   .track-row { grid-template-columns: 2.2rem minmax(0,1fr); }
