@@ -917,6 +917,26 @@ section { position: relative; }
   .nav-links, .nav-support { display: none; }
   .nav-toggle { display: flex; }
   .final-cta-actions { width: 100%; }
+
+  /* scroll-snap per section on mobile — each section locks into place as
+     you scroll, so you never stop halfway through one (Reels/TikTok-style).
+     Desktop keeps normal free scrolling; sections vary too much in height
+     there for hard snapping to feel good. scroll-margin-top offsets the
+     snap position by the fixed nav's height so it doesn't cover the top
+     of whatever section just snapped into view. */
+  /* unlike the marquee/reveal/menu-slide exemptions elsewhere, this one
+     is a judgment call worth flagging: scroll-snap overrides the user's
+     own scroll momentum on every single scroll gesture, not just a short
+     one-shot animation, which is closer to what prefers-reduced-motion
+     exists to prevent. Kept it unconditional anyway, matching every other
+     motion request this session, all of which needed the same override
+     to be visible at all on a device with Reduce Motion on. */
+  html { scroll-snap-type: y mandatory; }
+  main > section, .footer {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    scroll-margin-top: 64px;
+  }
 }
 
 @media (max-width: 560px) {
