@@ -233,9 +233,16 @@ h1, h2, h3, h4, p { margin: 0; }
 .nav-toggle {
   display: none;
   border: none;
-  width: 38px; height: 38px;
   align-items: center; justify-content: center;
+  padding: 0.5rem 0.9rem;
   color: var(--ink);
+  /* same voice as the hero headline ("Download it once. Keep it
+     forever."): Space Grotesk bold, tight letter-spacing — a confident
+     word instead of a generic icon */
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
 }
 
 /* ---------------------------------------------------------------------
@@ -913,23 +920,25 @@ section { position: relative; }
 }
 
 @media (max-width: 720px) {
-  .nav-links, .nav-support { display: none; }
+  .nav-links, .nav-support, .nav-mark { display: none; }
   .nav-toggle { display: flex; }
   .final-cta-actions { width: 100%; }
 
   /* floating pill nav: detached from the top edge, shrink-to-fit width,
      independent of document flow (already position:fixed) so hiding it
      never shifts layout. Visible only at the absolute top of the page;
-     see the onScroll handler in main.js for the show/hide logic. */
+     see the onScroll handler in main.js for the show/hide logic. Only
+     the "Menu" button lives in it now, so it's a single compact chip
+     rather than a wordmark-plus-button bar. */
   .nav {
     top: 14px;
     left: 50%;
     right: auto;
+    justify-content: center;
     transform: translateX(-50%);
     width: auto;
     max-width: calc(100% - 2rem);
-    gap: 1.25rem;
-    padding: 0.55rem 0.55rem 0.55rem 1.15rem;
+    padding: 0.3rem;
     border-radius: var(--radius-pill);
     border-bottom: none;
     box-shadow: 0 10px 30px -10px rgba(22, 22, 22, 0.28);
