@@ -78,6 +78,8 @@ html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; overflow-x: hidd
   [data-reveal-delay="1"] { transition-delay: 0.08s !important; }
   [data-reveal-delay="2"] { transition-delay: 0.16s !important; }
   [data-reveal-delay="3"] { transition-delay: 0.24s !important; }
+  /* the mobile menu slide is a direct response to a tap, not ambient motion */
+  .nav-sheet { transition-duration: 0.4s !important; }
 }
 
 body {
@@ -963,10 +965,10 @@ section { position: relative; }
   justify-content: center;
   gap: 1.5rem;
   padding: var(--edge);
-  transform: translateY(-100%);
+  transform: translateX(100%);
   transition: transform 0.4s var(--ease);
 }
-.nav-sheet.is-open { transform: translateY(0); }
+.nav-sheet.is-open { transform: translateX(0); }
 .nav-sheet a { font-size: 1.7rem; font-weight: 700; letter-spacing: -0.01em; }
 .nav-sheet-close {
   position: absolute;
