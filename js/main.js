@@ -3,11 +3,23 @@
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------------- Nav scroll state ---------------- */
+  /* ---------------- Nav scroll state ----------------
+     Also drives the mobile floating-pill nav's show/hide: visible only
+     at the absolute top of the page, hidden the instant the user scrolls
+     down by any amount, and — deliberately — does NOT reappear on scroll
+     up. It only comes back once scrollY returns to (near) 0. The
+     .is-hidden transform only has a visual effect inside the mobile
+     media query in style.css, so this runs unconditionally without
+     needing a viewport check: desktop is untouched by construction. */
   var nav = document.getElementById('siteNav');
+  var AT_TOP = 4;
   function onScroll() {
-    if (window.scrollY > 12) nav.classList.add('is-scrolled');
+    var y = window.scrollY;
+    if (y > 12) nav.classList.add('is-scrolled');
     else nav.classList.remove('is-scrolled');
+
+    if (y <= AT_TOP) nav.classList.remove('is-hidden');
+    else nav.classList.add('is-hidden');
   }
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });

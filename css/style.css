@@ -918,6 +918,32 @@ section { position: relative; }
   .nav-toggle { display: flex; }
   .final-cta-actions { width: 100%; }
 
+  /* floating pill nav: detached from the top edge, shrink-to-fit width,
+     independent of document flow (already position:fixed) so hiding it
+     never shifts layout. Visible only at the absolute top of the page;
+     see the onScroll handler in main.js for the show/hide logic. */
+  .nav {
+    top: 14px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: calc(100% - 2rem);
+    gap: 1.25rem;
+    padding: 0.55rem 0.55rem 0.55rem 1.15rem;
+    border-radius: var(--radius-pill);
+    border-bottom: none;
+    box-shadow: 0 10px 30px -10px rgba(22, 22, 22, 0.28);
+    transition: transform 0.35s var(--ease), opacity 0.35s var(--ease);
+  }
+  .nav.is-scrolled { border-bottom-color: transparent; }
+  .nav.is-hidden {
+    transform: translateX(-50%) translateY(-130%);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .nav-toggle { border-color: var(--line-strong); }
+
   /* scroll-snap per section on mobile — each section locks into place as
      you scroll, so you never stop halfway through one (Reels/TikTok-style).
      Desktop keeps normal free scrolling; sections vary too much in height
