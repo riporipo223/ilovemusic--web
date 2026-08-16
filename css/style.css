@@ -497,7 +497,11 @@ section { position: relative; }
 }
 @media (max-width: 720px) {
   .index-row { grid-template-columns: 2.5rem minmax(0,1fr); }
-  .index-row p { grid-column: 2 / -1; }
+  /* the description + tag live inside a wrapper <div>, which is the
+     actual 3rd grid item — repositioning the <p> alone did nothing, so
+     the wrapper auto-flowed into the narrow 2.5rem number column instead
+     of sitting under the heading, forcing every word onto its own line */
+  .index-row > div { grid-column: 2; }
 }
 
 /* ---------------------------------------------------------------------
